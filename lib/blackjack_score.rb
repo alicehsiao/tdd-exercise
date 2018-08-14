@@ -17,20 +17,18 @@ def blackjack_score (hand)
     end
   end
 
-  if hand.count(1) >= 1
-    if hand.count(1) == 1
-      if score <= 10
-        score += 11
-      elsif score > 10
+  if hand.count(1) == 1
+    if score <= 10
+      score += 11
+    elsif score > 10
+      score += 1
+    end
+  elsif hand.count(1) > 1
+    hand.count(1).times do
+      if score + 11 >= 21
         score += 1
-      end
-    elsif hand.count(1) > 1
-      hand.count(1).times do
-        if score + 11 >= 21
-          score += 1
-        else
-          score += 11
-        end
+      else
+        score += 11
       end
     end
   end
